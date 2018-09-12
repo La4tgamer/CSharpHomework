@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CS9_9_5 {
+namespace topic5 {
     public partial class Form1 : Form {
         public Form1() {
             InitializeComponent();
@@ -40,6 +40,10 @@ namespace CS9_9_5 {
 
         private void textBox2_Click(object sender, EventArgs e) {
             textBox2.Text = "";
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+
         }
     }
 }

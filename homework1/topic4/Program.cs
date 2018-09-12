@@ -16,8 +16,9 @@ namespace topic4 {
             Console.Write("input the second number:");
             s = Console.ReadLine();
             IVa2 = int.Parse(s);
-            Console.Write("Their product is");
-            Console.WriteLine(IVa2 * IVa2);
+            Console.Write("Their product is:");
+            Console.WriteLine((IVa1 * IVa2));
+            Console.Read();
         }
     }
 }
