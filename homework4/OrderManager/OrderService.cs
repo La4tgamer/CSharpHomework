@@ -10,14 +10,21 @@ namespace OrderManager {
         //在订单删除、修改失败时，能够产生异常并显示给客户错误信息。
         //储存order的list
         public List<Order> Orders { set; get; }
+        public int orderNum { set; get; }
         //构造函数
         public OrderService() {
             Orders = new List<Order>();
+            orderNum = 0;
         }
         //show
         public void ShowOrders() {
-            foreach (Order order in Orders){
-                order.ShowOrder();
+            if (orderNum != 0) {
+                foreach (Order order in Orders) {
+                    order.ShowOrder();
+                }
+            }
+            else {
+                Console.WriteLine("没有订单");
             }
         }
         
@@ -25,26 +32,41 @@ namespace OrderManager {
         public bool AddOrder() {
             Order order = new Order();
             Orders.Add(order);
+            orderNum++;
             return true;
         }
         public bool AddOrder(string customer) {
             Order order = new Order(customer);
             Orders.Add(order);
+            orderNum++;
             return true;
         }
         public bool AddOrder(string customer, long ID) {
             Order order = new Order(customer, ID);
             Orders.Add(order);
+            orderNum++;
             return true;
         }
         public bool AddOrder(Order order) {
             Orders.Add(order);
+            orderNum++;
             return true;
         }
         //delete
        public bool DeleteOrder(int index) {
             Orders.RemoveAt(index);
+            orderNum--;
             return true;
+        }
+        public bool DeleteOrder(Order order) {
+            try {
+                Orders.RemoveAt(Orders.IndexOf(order));
+                orderNum--;
+                return true;
+            }
+            catch {
+                return false;
+            }
         }
         //find
         public Order FindOrder(string customer) {

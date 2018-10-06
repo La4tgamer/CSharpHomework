@@ -15,12 +15,13 @@ namespace OrderManager {
         public string Customer { set; get; }
         public List<OrderDetails> Items { set; get; }
         //protected int maxItemNum = 10;
-        protected int itemNum = 0;
+        public int itemNum { set; get; }
         //构造方法
         public Order() {
             OrderID = 0000;
             Customer = "未知";
             Items = new List<OrderDetails>();
+            itemNum = 0;
         }
         public Order(string customer) :this() {
             Customer = customer;
@@ -78,7 +79,21 @@ namespace OrderManager {
             //}
             //Items[itemNum - 1] = null;
             //itemNum--;
-            Items.RemoveAt(index);
+            try {
+                Items.RemoveAt(index);
+            }
+            catch { return false; }
+            return true;
+        }
+        //modify items
+        public bool ModifyItem(int index, string productName, int productNum, double productPrice) {
+            try {
+                OrderDetails item = new OrderDetails(productName, productNum, productPrice);
+                Items[index] = item;
+            }
+            catch {
+                return false;
+            }
             return true;
         }
     }
