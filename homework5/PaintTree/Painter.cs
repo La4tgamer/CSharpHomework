@@ -7,36 +7,40 @@ using System.Drawing;
 
 namespace PaintTree {
     class Painter {
-        private Pen pen = Pens.Blue;
+        private Pen pen = null;
         public Graphics graphics;
         double th1 = 30 * Math.PI / 180;
         double th2 = 20 * Math.PI / 180;
+        //float thickness = 1.0f;
         double per1 = 0.6;
         double per2 = 0.7;
         public Painter() {
-            
+            pen = new Pen(Color.Brown, 1.0f);
         }
         public void SetMultipleOfLength(double per1, double per2) {
             this.per1 = per1;
             this.per2 = per2;
         }
+        public void SetThicknessDegree(float thickness) {
+            pen.Width = thickness;
+        }
         public void SetPenColor(string color) {
              
             switch (color.ToLower()) {
                 case "bule":
-                    pen = Pens.Blue;
+                    pen.Color = Color.Blue;
                     break;
                 case "red":
-                    pen = Pens.Red;
+                    pen.Color = Color.Red;
                     break;
                 case "purple":
-                    pen = Pens.Purple;
+                    pen.Color = Color.Purple;
                     break;
                 case "green":
-                    pen = Pens.Green;
+                    pen.Color = Color.Green;
                     break;
                 case "brown":
-                    pen = Pens.Brown;
+                    pen.Color = Color.Brown;
                     break;
             }
         }

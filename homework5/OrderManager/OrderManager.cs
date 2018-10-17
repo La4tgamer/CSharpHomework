@@ -55,7 +55,7 @@ namespace OrderManager {
                 }
               
                 else if (a == 3) {
-                    Console.Write("请输入客户姓名或订单号(输入按照金额搜索大于1w元订单):");
+                    Console.Write("请输入客户姓名或订单号(输入'按照金额'搜索大于1w元订单):");
                     string find = Console.ReadLine();
                     List<Order> orders = null;
                     Order order = null;

@@ -16,14 +16,15 @@ namespace PaintTree {
         }
         
         private void Form1_Load(object sender, EventArgs e) {
-
+            this.colors.SelectedIndex = 4;
         }
 
         private void draw_Click(object sender, EventArgs e) {
             painter.graphics = CreateGraphics();
             painter.graphics.Clear(Color.White);
             painter.SetMultipleOfLength((double)per1.Value, (double)per2.Value);
-            painter.DrawCayleyTree((int)floor.Value, 200, 310
+            painter.SetThicknessDegree((float)thicknessDegree.Value);
+            painter.DrawCayleyTree((int)floor.Value, 250, 350
                 , 100, -Math.PI / 2);
         }
 
