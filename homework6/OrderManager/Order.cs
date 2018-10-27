@@ -110,5 +110,11 @@ namespace OrderManager {
             }
             return true;
         }
+        public void CalTotalMoney() {
+            TotalMoney = 0;
+            foreach (var item in this.Items) {
+                TotalMoney += item.TotalMoney;
+            }
+        }
     }
 }
