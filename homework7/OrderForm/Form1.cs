@@ -23,6 +23,8 @@ namespace OrderForm {
         private void button1_Click(object sender, EventArgs e) {
             Form2 form2 = new Form2(orderService);
             form2.ShowDialog();
+            //check money
+            CheckMoney();
             this.dataGridView1.DataSource = new List<Order>();
             this.dataGridView1.DataSource = orderService.Orders;
         }
@@ -42,9 +44,19 @@ namespace OrderForm {
 
 
         }
-
+        public void CheckMoney() {
+            //检查价格对不对
+            foreach (var item in orderService.Orders) {
+                foreach (var item1 in item.Items) {
+                    item1.CalTotalMoney();
+                }
+                item.CalTotalMoney();
+            }
+        }
         private void Form1_Load(object sender, EventArgs e) {
             orderService.Import(Application.StartupPath.ToString() + "\\Order.xml");
+            //检查价格
+            CheckMoney();
             //加载时重新绑定
             this.dataGridView1.DataSource = new List<Order>();
             this.dataGridView1.DataSource = orderService.Orders;
@@ -53,6 +65,8 @@ namespace OrderForm {
         private void button2_Click(object sender, EventArgs e) {
             Form2 form2 = new Form2(orderService, this.dataGridView1.CurrentRow.Index);
             form2.ShowDialog();
+            //check money
+            CheckMoney();
         }
 
         private void button3_Click(object sender, EventArgs e) {

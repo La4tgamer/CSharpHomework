@@ -10,7 +10,7 @@ namespace OrderManager {
         public string ProductName{ set; get;}
         public int ProductNum { set; get; }
         public double ProductPrice { set; get; }
-        public double TotalMoney { get; }
+        public double TotalMoney { get; set; }
         //构造方法
         public OrderDetails() {
             ProductName = "未知";
@@ -29,6 +29,10 @@ namespace OrderManager {
         }
         public OrderDetails(string productName, int productNum, double productPrice) : this(productName, productNum) {
             ProductPrice = productPrice;
+            TotalMoney = ProductPrice * ProductNum;
+        }
+        //cal
+        public void CalTotalMoney() {
             TotalMoney = ProductPrice * ProductNum;
         }
         //show
