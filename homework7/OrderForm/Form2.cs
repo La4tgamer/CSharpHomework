@@ -37,29 +37,33 @@ namespace OrderForm {
             this.dataGridView1.DataSource = order.Items;
         }
         private void button1_Click(object sender, EventArgs e) {
-           
-            for (int i = 0; i < dataGridView1.Rows.Count- 1; i++) {
-                OrderDetails item = new OrderDetails();
-                for (int j = 0; j < dataGridView1.ColumnCount; j++) {
-                    if (j == 0) {
-                        item.ProductName = dataGridView1.Rows[i].Cells[j].Value.ToString();
+            try {
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++) {
+                    OrderDetails item = new OrderDetails();
+                    for (int j = 0; j < dataGridView1.ColumnCount; j++) {
+                        if (j == 0) {
+                            item.ProductName = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                        }
+                        else if (j == 1) {
+                            item.ProductNum = int.Parse(dataGridView1.Rows[i].Cells[j].Value.ToString());
+                        }
+                        else if (j == 2) {
+                            item.ProductPrice = double.Parse(dataGridView1.Rows[i].Cells[j].Value.ToString());
+                        }
                     }
-                    else if (j == 1) {
-                        item.ProductNum = int.Parse(dataGridView1.Rows[i].Cells[j].Value.ToString());
-                    }
-                    else if (j == 2) {
-                        item.ProductPrice = double.Parse(dataGridView1.Rows[i].Cells[j].Value.ToString());
-                    }
+                    order.AddItem(item);
                 }
-                order.AddItem(item);
-            }
-            if (flag == 0) {
-                orderService.AddOrder(order);
-            }
-            else {
+                if (flag == 0) {
+                    orderService.AddOrder(order);
+                }
+                else {
 
+                }
+                this.Close();
             }
-            this.Close();
+            catch {
+                MessageBox.Show("添加失败");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e) {
