@@ -86,5 +86,23 @@ namespace OrderForm {
             }
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
+            if (textBox1.Text == "" || textBox1.Text == null) {
+                this.dataGridView1.DataSource = new List<Order>();
+                this.dataGridView1.DataSource = orderService.Orders;
+            }
+            else {
+                List<Order> orders = null;
+                var query = from order in orderService.Orders
+                            where order.Customer.Contains(textBox1.Text)
+                            select order;
+                orders = query.ToList();
+                //
+                this.dataGridView1.DataSource = new List<Order>();
+                this.dataGridView1.DataSource = orders;
+            }
+
+        }
     }
 }
