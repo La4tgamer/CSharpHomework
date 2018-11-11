@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using OrderManager;
 namespace OrderForm {
     public partial class Form2 : Form {
-        int flag;//判断是修改1还是添加0
+        int flag;//判断是修改(1)还是添加(0)
         OrderService orderService;
         //处理前两个Text
         BindingSource bs = new BindingSource();
@@ -53,13 +54,24 @@ namespace OrderForm {
                     }
                     order.AddItem(item);
                 }
-                if (flag == 0) {
-                    orderService.AddOrder(order);
-                }
-                else {
+                /*格式判断
+                 * 订单号符合年月日加三位流水号(四位数加两位数0到12加0到31)
+                 *电话号码规范
+                 */
+                Regex regexOrderNum = new Regex(@"^\d{4}[01]\d[0-3]\d{4}$");
+                //Regex regexPhoneNum = new Regex()
+                if (regexOrderNum.IsMatch(order.OrderID.ToString())) {
+                    if (flag == 0) {
+                        orderService.AddOrder(order);
+                    }
+                    else {
 
+                    }
+                    this.Close();
                 }
-                this.Close();
+                else {//失败添加失败
+                    MessageBox.Show("订单号格式错误");
+                }
             }
             catch {
                 MessageBox.Show("添加失败");

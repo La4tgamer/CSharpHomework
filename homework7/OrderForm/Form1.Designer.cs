@@ -32,9 +32,8 @@
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalMoneyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -45,15 +44,17 @@
             this.itemNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalMoneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.totalMoneyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemSource = new System.Windows.Forms.BindingSource(this.components);
+            this.outputHtmlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -69,7 +70,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.outputHtmlToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -130,17 +132,6 @@
             this.ProductPrice.Name = "ProductPrice";
             this.ProductPrice.ReadOnly = true;
             // 
-            // totalMoneyDataGridViewTextBoxColumn1
-            // 
-            this.totalMoneyDataGridViewTextBoxColumn1.DataPropertyName = "TotalMoney";
-            this.totalMoneyDataGridViewTextBoxColumn1.HeaderText = "TotalMoney";
-            this.totalMoneyDataGridViewTextBoxColumn1.Name = "totalMoneyDataGridViewTextBoxColumn1";
-            this.totalMoneyDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // itemSource
-            // 
-            this.itemSource.DataSource = typeof(OrderManager.OrderDetails);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.textBox1);
@@ -153,9 +144,18 @@
             this.panel1.Size = new System.Drawing.Size(140, 328);
             this.panel1.TabIndex = 4;
             // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(28, 258);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 25);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // button3
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Image = global::OrderForm.Properties.Resources.delete1;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(31, 185);
@@ -168,7 +168,7 @@
             // 
             // button2
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Image = global::OrderForm.Properties.Resources.change1;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(31, 108);
@@ -252,13 +252,23 @@
             // 
             this.orderSource.DataSource = typeof(OrderManager.Order);
             // 
-            // textBox1
+            // totalMoneyDataGridViewTextBoxColumn1
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 258);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 25);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.totalMoneyDataGridViewTextBoxColumn1.DataPropertyName = "TotalMoney";
+            this.totalMoneyDataGridViewTextBoxColumn1.HeaderText = "TotalMoney";
+            this.totalMoneyDataGridViewTextBoxColumn1.Name = "totalMoneyDataGridViewTextBoxColumn1";
+            this.totalMoneyDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // itemSource
+            // 
+            this.itemSource.DataSource = typeof(OrderManager.OrderDetails);
+            // 
+            // outputHtmlToolStripMenuItem
+            // 
+            this.outputHtmlToolStripMenuItem.Name = "outputHtmlToolStripMenuItem";
+            this.outputHtmlToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.outputHtmlToolStripMenuItem.Text = "Output Html";
+            this.outputHtmlToolStripMenuItem.Click += new System.EventHandler(this.outputHtmlToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -277,12 +287,12 @@
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,6 +325,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem outputHtmlToolStripMenuItem;
     }
 }
 
