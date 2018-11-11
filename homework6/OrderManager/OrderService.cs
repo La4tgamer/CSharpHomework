@@ -123,7 +123,7 @@ namespace OrderManager {
         //序列化
         public bool Export(string fileName) {
             try {
-                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write)) {
+                using (FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write)) {
                     XmlSerializer xml = new XmlSerializer(Orders.GetType());
                     xml.Serialize(fs, Orders);
                 }

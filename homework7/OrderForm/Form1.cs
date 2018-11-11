@@ -120,7 +120,7 @@ namespace OrderForm {
                 XslCompiledTransform xt = new XslCompiledTransform();
                 xt.Load(@".\Order.xslt");
 
-                FileStream outFileStream = File.OpenWrite(@".\OrderList.html");
+                FileStream outFileStream = File.Create(@".\OrderList.html");
                 XmlTextWriter writer =
                     new XmlTextWriter(outFileStream, System.Text.Encoding.UTF8);
                 xt.Transform(nav, null, writer);
