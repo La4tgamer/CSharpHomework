@@ -41,7 +41,7 @@ namespace Crawler {
                     }
                     current = url;
                 }
-                if (current == null || count > 17) {
+                if (current == null || count > 15) {
                     break;
                 }
                 Console.WriteLine("Is crawling" + current + "||html!");
@@ -79,7 +79,7 @@ namespace Crawler {
                     //urls[url] = true;
                     
                 }
-                if (current == null || count > 10) {
+                if (current == null || count > 15) {
                     break;
                 }
                 Parallel.ForEach(current, url => {

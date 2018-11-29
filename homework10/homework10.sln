@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler", "Crawler\Crawler.csproj", "{8DEBF054-5A9C-43BB-BFCA-A170EE4E30A5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager", "OrderManager\OrderManager.csproj", "{B66ED702-50F6-4098-9367-FF724BA94ABB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderForm", "OrderForm\OrderForm.csproj", "{15A4F5A1-E26B-4BDE-8EC6-2E4D4A7FEA24}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8DEBF054-5A9C-43BB-BFCA-A170EE4E30A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DEBF054-5A9C-43BB-BFCA-A170EE4E30A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DEBF054-5A9C-43BB-BFCA-A170EE4E30A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DEBF054-5A9C-43BB-BFCA-A170EE4E30A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B66ED702-50F6-4098-9367-FF724BA94ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B66ED702-50F6-4098-9367-FF724BA94ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B66ED702-50F6-4098-9367-FF724BA94ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -32,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B5FE3125-C0FB-4BE8-A4CA-D3D0FED1A7F4}
+		SolutionGuid = {D77C81C0-89CD-4AC4-B36B-E9D68773137F}
 	EndGlobalSection
 EndGlobal
